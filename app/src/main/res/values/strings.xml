@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">OOAP</string>
+    <string name="title_page">Hello World</string>
+    <string name="title_name">Chattongchai Raksitanon</string>
+    <string name="date_picker">Please Input Date</string>
+    <string name="button_submit">Submit</string>
+    <string name="section_1">วันที่ 17 / 7 / 2021 </string>
+    <string name="section_2">วันที่ 24 / 7 / 2021 </string>
+</resources>

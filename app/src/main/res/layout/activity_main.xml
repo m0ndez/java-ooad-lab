@@ -19,6 +19,169 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+
+            <!--            31/7/2021       -->
+            <TextView
+                android:id="@+id/section_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="วันที่ 31/7/2021"
+                android:textColor="@color/red_500"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginVertical="5sp"
+                android:textAlignment="center"
+                android:background="@color/black"
+                />
+
+            <RadioGroup
+                android:id="@+id/group1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sushi"
+                    />
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bento"
+                    />
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Teriyaki"
+                    />
+            </RadioGroup>
+            <Button
+                android:id="@+id/group_button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="submit RadioGroup"
+                android:layout_marginBottom="14dp"
+                />
+
+            <CheckBox
+                android:id="@+id/chkSushi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sushi"
+                />
+            <CheckBox
+                android:id="@+id/chkBento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bento"
+                />
+            <CheckBox
+                android:id="@+id/chkTeriyaki"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teriyaki"
+                />
+            <CheckBox
+                android:id="@+id/chkRamen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ramen"
+                />
+
+            <Button
+                android:id="@+id/chk_button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="submit CheckBox"
+                android:layout_marginBottom="14dp"
+                />
+
+            <TextView
+                android:id="@+id/ColorPalletSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="COLOR PALLET FOR SEEKBAR"
+                android:textSize="26dp"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/seekBarTextRed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="RED : 0"
+                android:textStyle="bold"
+                android:textSize="16dp"
+
+                />
+            <SeekBar
+                android:id="@+id/seekBarRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_weight="5"
+                android:progress="0"
+                >
+                <requestFocus/>
+            </SeekBar>
+
+            <TextView
+                android:id="@+id/seekBarTextGreen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="GREEN : 0"
+                android:textStyle="bold"
+                android:textSize="16dp"
+
+                />
+            <SeekBar
+                android:id="@+id/seekBarGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_weight="5"
+                android:progress="0"
+                >
+                <requestFocus/>
+            </SeekBar>
+
+            <TextView
+                android:id="@+id/seekBarTextBlue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="BLUE : 0"
+                android:textStyle="bold"
+                android:textSize="16dp"
+
+                />
+            <SeekBar
+                android:id="@+id/seekBarBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_weight="5"
+                android:progress="0"
+                >
+                <requestFocus/>
+            </SeekBar>
+
+            <TextView
+                android:id="@+id/seekBarTextResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="THIS IS COLOR PALLET"
+                android:textSize="32dp"
+                android:textAlignment="center"
+                />
+
+            <!--            -->
+
+
+
 <!--            17/7/2021-->
             <TextView
                 android:id="@+id/section_1"
@@ -50,15 +213,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText1old"
-                    android:hint="@string/date_picker"
-                    android:textColorHint="@color/red_500"
-                    android:layout_gravity="center_horizontal"
-                    android:inputType="datetime"
-                    />
+<!--                <EditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/editText1old"-->
+<!--                    android:hint="@string/date_picker"-->
+<!--                    android:textColorHint="@color/red_500"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:inputType="datetime"-->
+<!--                    />-->
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,6 +334,7 @@
             android:text="exp3_ Taipei"
             android:textAllCaps="false" />
 <!--            -->
+
         </LinearLayout>
     </ScrollView>
 

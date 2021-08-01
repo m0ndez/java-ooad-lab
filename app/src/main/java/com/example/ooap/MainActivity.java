@@ -9,32 +9,144 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.function.Function;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 //    OLD Code 17/7/2021
     String msg = "PNRU : ";
     String name = "Chattongchai Logging";
+//    31/7/2021
+   int r,g,b = 0;
+   TextView seekBarTextRed, seekBarTextGreen, seekBarTextBlue, seekBarTextResult;
+   SeekBar seekBarRed, seekBarGreen, seekBarBlue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        31/7/2021
+        RadioGroup group = (RadioGroup) findViewById(R.id.group1);
+        Button button_Radio = (Button) findViewById(R.id.group_button1);
+        button_Radio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selected = group.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton) findViewById(selected);
+                Toast.makeText(MainActivity.this, "You Choose : "+ radioButton.getText(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        CheckBox chkBento, chkSushi, chkTeriyaki, chkRamen;
+        Button buttonChk;
+        chkBento =(CheckBox) findViewById(R.id.chkBento);
+        chkSushi =(CheckBox) findViewById(R.id.chkSushi);
+        chkTeriyaki =(CheckBox) findViewById(R.id.chkTeriyaki);
+        chkRamen =(CheckBox) findViewById(R.id.chkRamen);
+        buttonChk = (Button) findViewById(R.id.chk_button1);
+        buttonChk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox) view).isChecked() == true) {
+                    Toast.makeText(MainActivity.this, "Bento is Checked", Toast.LENGTH_SHORT).show();
+                } else  {
+                    Toast.makeText(MainActivity.this, "Bento is unChecked",Toast.LENGTH_SHORT).show();
+                }
+//                StringBuffer result = new StringBuffer();
+//                result.append("Sushi Check : ").append(chkSushi.isChecked());
+//                result.append("\nBento Check : ").append(chkBento.isChecked());
+//                result.append("\nTeriyaki Check : ").append(chkTeriyaki.isChecked());
+//                result.append("\nRamen Check : ").append(chkRamen.isChecked());
+//                Toast.makeText(MainActivity.this, result.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        seekBarTextRed = (TextView) findViewById(R.id.seekBarTextRed);
+        seekBarTextGreen = (TextView) findViewById(R.id.seekBarTextGreen);
+        seekBarTextBlue = (TextView) findViewById(R.id.seekBarTextBlue);
+        seekBarTextResult = (TextView) findViewById(R.id.seekBarTextResult);
+
+        seekBarRed = (SeekBar) findViewById(R.id.seekBarRed);
+        seekBarGreen = (SeekBar) findViewById(R.id.seekBarGreen);
+        seekBarBlue = (SeekBar) findViewById(R.id.seekBarBlue);
+        seekBarRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
+                r = i;
+                seekBarTextRed.setText("RED : "+r);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                seekBarTextResult.setTextColor(Color.rgb(r,g,b));
+            }
+        });
+        seekBarGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
+                g = i;
+                seekBarTextGreen.setText("GREEN : "+g);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                seekBarTextResult.setTextColor(Color.rgb(r,g,b));
+            }
+        });
+        seekBarBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
+                b = i;
+                seekBarTextBlue.setText("BLUE : "+b);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                seekBarTextResult.setTextColor(Color.rgb(r,g,b));
+            }
+        });
+//        seekBar.setOnSeekBarChangeListener(this);
+
+//
+
 //        Console.log
-        Log.d(name, "loop Check");
+//        Log.d(name, "loop Check");
 //        Log.e(name, "e");
 //        Log.i(name, "i");
 //        Log.v(name, "v");
 //        Log.w(name, "W");
 //        MakeText Example
 //        Implements Toast via Lifecycle Event
+
         Context context = getApplicationContext();
         CharSequence txt = "Hello Chattongchai";
         int duration = Toast.LENGTH_SHORT;
         Toast.makeText(context,txt, duration).show();
 //
+
 
 //    24 / 7 / 2021 การใช้ Implement, การสร้างปุ่ม, การกำหนด Function onClick 3 แบบ
 //    Generate Global Button Component
@@ -93,13 +205,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Button button = (Button) v;
         String ans = button.getText().toString();
-//        if(v.getId() == R.id.button8) {
-//            ans = button.getText().toString();
-//        } else if (v.getId() == R.id.button9) {
-//            ans = button.getText().toString();
-//        } else  {
-//            ans = button.getText().toString();
-//        }
+        if(v.getId() == R.id.button8) {
+            ans = button.getText().toString();
+        } else if (v.getId() == R.id.button9) {
+            ans = button.getText().toString();
+        } else  {
+            ans = button.getText().toString();
+        }
         Toast.makeText(getApplicationContext(), ans, Toast.LENGTH_SHORT).show();
     }
 
@@ -124,44 +236,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.LENGTH_SHORT).show();
     }
 
+//    31/7/2021 SeekBar
     @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(msg, "onStart()");
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(msg, "onStop()");
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(msg, "onDestroy()");
+    public void onStartTrackingTouch(SeekBar seekBar) {
 
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(msg, "onPause()");
-
+    public void onStopTrackingTouch(SeekBar seekBar) {
+//        seekBarText.setTextSize(seekBar);
     }
+//
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(msg, "onResume()");
-    }
-
-    @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
-        Toast.makeText(MainActivity.this, "Are you soure ?", Toast.LENGTH_LONG).show();
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d(msg, "onStart()");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d(msg, "onStop()");
+//
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Log.d(msg, "onDestroy()");
+//
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.d(msg, "onPause()");
+//
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d(msg, "onResume()");
+//    }
+//
+//    @Override
+//    public void onBackPressed() {
+////        super.onBackPressed();
+//        Toast.makeText(MainActivity.this, "Are you soure ?", Toast.LENGTH_LONG).show();
+//    }
 //
 //    @Override
 //    public void onClick(View v) {
